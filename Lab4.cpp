@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "Lab4.h"
-#include "ShapeObjectsEditor.h"
+#include "MyEditor.h"
 
 #define MAX_LOADSTRING 100
 
@@ -12,7 +12,7 @@ HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
-ShapeObjectsEditor object;
+MyEditor Editor;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -130,28 +130,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_CREATE:
-        object.OnCreate(hWnd, hInst);
+        Editor.OnCreate(hWnd, hInst);
         break;
     case WM_SIZE:
-        object.OnSize(hWnd);
+        Editor.OnSize(hWnd);
         break;
     case WM_NOTIFY:
-        object.OnNotify(hWnd, wParam, lParam);
+        Editor.OnNotify(hWnd, wParam, lParam);
         break;
     case WM_LBUTTONDOWN:
-        object.OnLBdown(hWnd);
+        Editor.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP:
-        object.OnLBup(hWnd);
+        Editor.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE:
-        object.OnMouseMove(hWnd);
+        Editor.OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        object.OnPaint(hWnd);
+        Editor.OnPaint(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        object.OnInitMenuPopup(hWnd, wParam);
+        Editor.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_COMMAND:
     {
@@ -162,22 +162,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case ID_TOOL_POINT:
         case IDM_POINT:
-            object.StartPointEditor(hWnd);
+            Editor.StartPointEditor(hWnd);
             break;
 
         case ID_TOOL_LINE:
         case IDM_LINE:
-            object.StartLineEditor(hWnd);
+            Editor.StartLineEditor(hWnd);
             break;
 
         case ID_TOOL_RECT:
         case IDM_RECT:
-            object.StartRectEditor(hWnd);
+            Editor.StartRectEditor(hWnd);
             break;
 
         case ID_TOOL_ELLIPSE:
         case IDM_ELLIPSE:
-            object.StartEllipseEditor(hWnd);
+            Editor.StartEllipseEditor(hWnd);
             break;
 
         case IDM_ABOUT:

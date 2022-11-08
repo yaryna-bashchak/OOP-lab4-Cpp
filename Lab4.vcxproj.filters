@@ -36,7 +36,7 @@
     <ClInclude Include="ShapeEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeObjectsEditor.h">
+    <ClInclude Include="MyEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shapes.h">
@@ -59,7 +59,7 @@
     <ClCompile Include="ShapeEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeObjectsEditor.cpp">
+    <ClCompile Include="MyEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Toolbar.cpp">

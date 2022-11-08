@@ -3,10 +3,12 @@
 #include "ShapeEditor.h"
 #include "Toolbar.h"
 
-class ShapeObjectsEditor
+class MyEditor
 {
 private:
+	static const int ARRAY_SIZE = 103;
 	int COUNT_OF_OBJECTS = 0;
+	Shape* pcshape[ARRAY_SIZE];
 public:
 	void StartPointEditor(HWND hWnd);
 	void StartLineEditor(HWND hWnd);
