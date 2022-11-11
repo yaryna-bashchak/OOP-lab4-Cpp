@@ -17,22 +17,6 @@ void MyEditor::Start(HWND hWnd, Shape * object) {
 	ToolBar.OnPress(hWnd, object);
 };
 
-//void MyEditor::StartPointEditor(HWND hWnd) {
-//	pse = new PointEditor(hWnd);
-//	ToolBar.OnPress(hWnd, ID_TOOL_POINT);
-//};
-//void MyEditor::StartLineEditor(HWND hWnd) {
-//	pse = new LineEditor(hWnd);
-//	ToolBar.OnPress(hWnd, ID_TOOL_LINE);
-//};
-//void MyEditor::StartRectEditor(HWND hWnd) {
-//	pse = new RectEditor(hWnd);
-//	ToolBar.OnPress(hWnd, ID_TOOL_RECT);
-//};
-//void MyEditor::StartEllipseEditor(HWND hWnd) {
-//	pse = new EllipseEditor(hWnd);
-//	ToolBar.OnPress(hWnd, ID_TOOL_ELLIPSE);
-//};
 void MyEditor::OnLBdown(HWND hWnd) {
 	if (pse && press)
 	{
@@ -49,19 +33,31 @@ void MyEditor::OnLBup(HWND hWnd) {
 		InvalidateRect(hWnd, NULL, TRUE);
 		//pse->OnLBup(hWnd, pcshape, COUNT_OF_OBJECTS);
 		COUNT_OF_OBJECTS++;
+		pse->Set(0, 0, 0, 0);
 	}
 };
 void MyEditor::OnMouseMove(HWND hWnd) {
-	if (pse && press)
+	if (press && pse->isStarted())
+	{
+		HDC hdc = GetDC(hWnd);
+		SetROP2(hdc, R2_NOTXORPEN);
+		SelectObject(hdc, pse->GetShadowPen());
+		pse->Show(hdc);
 		pse->UpdateEnd(hWnd);
+		pse->Show(hdc);
 		//pse->OnMouseMove(hWnd);
+	}
+		
 };
 void MyEditor::OnPaint(HWND hWnd) {
 	PAINTSTRUCT ps;
 	HDC hdc;
 	hdc = BeginPaint(hWnd, &ps);
 	for (int i = 0; i < COUNT_OF_OBJECTS; i++)
+	{
+		pcshape[i]->SelectPen(hdc);
 		pcshape[i]->Show(hdc);
+	}	
 	EndPaint(hWnd, &ps);
 	//pse->OnPaint(hWnd, pcshape, COUNT_OF_OBJECTS);
 };

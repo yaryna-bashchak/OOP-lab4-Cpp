@@ -13,6 +13,7 @@ Shape::Shape(const Shape &other)
 Shape::~Shape()
 {
 	DeleteObject(hPen);
+	DeleteObject(hPenShadow);
 	DeleteObject(hBrush);
 }
 
