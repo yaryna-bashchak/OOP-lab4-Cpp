@@ -5,7 +5,7 @@
 #include "editors.h"
 
 Shape* pse = NULL;
-BOOL press = FALSE;
+BOOL press = TRUE;
 BOOL* ppress = &press;
 LPARAM LastButtonId = 0;
 LPARAM* pLastButtonId = &LastButtonId;
@@ -57,6 +57,12 @@ void MyEditor::OnMouseMove(HWND hWnd) {
 		//pse->OnMouseMove(hWnd);
 };
 void MyEditor::OnPaint(HWND hWnd) {
+	PAINTSTRUCT ps;
+	HDC hdc;
+	hdc = BeginPaint(hWnd, &ps);
+	for (int i = 0; i < COUNT_OF_OBJECTS; i++)
+		pcshape[i]->Show(hdc);
+	EndPaint(hWnd, &ps);
 	//pse->OnPaint(hWnd, pcshape, COUNT_OF_OBJECTS);
 };
 
