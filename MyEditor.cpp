@@ -5,7 +5,7 @@
 #include "editors.h"
 
 Shape* pse = NULL;
-BOOL press = TRUE;
+BOOL press = FALSE;
 BOOL* ppress = &press;
 LPARAM LastButtonId = 0;
 LPARAM* pLastButtonId = &LastButtonId;
@@ -14,7 +14,7 @@ Toolbar ToolBar(ppress, pLastButtonId);
 
 void MyEditor::Start(HWND hWnd, Shape * object) {
 	pse = object;
-	//ToolBar.OnPress(hWnd, ID_TOOL_POINT);
+	ToolBar.OnPress(hWnd, object);
 };
 
 //void MyEditor::StartPointEditor(HWND hWnd) {

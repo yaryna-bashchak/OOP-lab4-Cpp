@@ -2,6 +2,7 @@
 #include <commctrl.h>
 #pragma comment(lib, "comctl32.lib")
 #include "resource.h"
+#include "Shape.h"
 
 class Toolbar
 {
@@ -13,6 +14,6 @@ public:
     Toolbar(BOOL*, LPARAM*);
 	void OnCreate(HWND, HINSTANCE);
     void OnSize(HWND hWnd);
-    void OnPress(HWND hWnd, LPARAM id);
+    void OnPress(HWND hWnd, Shape*);
     void OnNotify(HWND, WPARAM, LPARAM);
 };

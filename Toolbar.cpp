@@ -1,9 +1,14 @@
 #include "framework.h"
 #include "Toolbar.h"
+#include <typeinfo>
+#include <string>
+
+using namespace std;
 
 int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE };
 const int COUNT_OF_BUTTONS = sizeof(IDS) / sizeof(int);
 TBBUTTON tbb[COUNT_OF_BUTTONS];
+int GetToolId(Shape*);
 
 Toolbar::Toolbar(BOOL* press, LPARAM* id)
 {
@@ -45,8 +50,10 @@ void Toolbar::OnSize(HWND hWnd)
     }
 }
 
-void Toolbar::OnPress(HWND hWnd, LPARAM id)
+void Toolbar::OnPress(HWND hWnd, Shape* object)
 {
+    LPARAM id = GetToolId(object);
+
     if (*pLastId == id || !(*pLastId))
     {
         *ppress = !(*ppress);
@@ -92,4 +99,12 @@ void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
         default: lstrcpy(lpttt->szText, L"ўось нев≥доме");
         }
     }
+}
+
+int GetToolId(Shape* object) {
+    string ClassName = typeid(*object).name();
+    if (ClassName == "class Point")        return ID_TOOL_POINT;
+    else if (ClassName == "class Line")    return ID_TOOL_LINE;
+    else if (ClassName == "class Rect")    return ID_TOOL_RECT;
+    else if (ClassName == "class Elipse")  return ID_TOOL_ELLIPSE;
 }
