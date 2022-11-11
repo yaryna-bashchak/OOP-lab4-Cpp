@@ -1,9 +1,7 @@
 #include "framework.h"
 #include "Toolbar.h"
+#include "shapes.h"
 #include <typeinfo>
-#include <string>
-
-using namespace std;
 
 int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE };
 const int COUNT_OF_BUTTONS = sizeof(IDS) / sizeof(int);
@@ -102,9 +100,10 @@ void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
 }
 
 int GetToolId(Shape* object) {
-    string ClassName = typeid(*object).name();
-    if (ClassName == "class Point")        return ID_TOOL_POINT;
-    else if (ClassName == "class Line")    return ID_TOOL_LINE;
-    else if (ClassName == "class Rect")    return ID_TOOL_RECT;
-    else if (ClassName == "class Elipse")  return ID_TOOL_ELLIPSE;
+    auto& type = typeid(*object);
+
+    if (type == typeid(Point))        return ID_TOOL_POINT;
+    else if (type == typeid(Line))    return ID_TOOL_LINE;
+    else if (type == typeid(Rect))    return ID_TOOL_RECT;
+    else if (type == typeid(Elipse))  return ID_TOOL_ELLIPSE;
 }
