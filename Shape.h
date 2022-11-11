@@ -8,8 +8,17 @@ protected:
 	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
 	HPEN hPenForPoint = CreatePen(PS_SOLID, 7, 0);
 	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
+	void DrawLine(HDC hdc, long x1, long y1, long x2, long y2);
+	void DrawRect(HDC hdc, long x1, long y1, long x2, long y2);
+	void DrawEllipse(HDC hdc, long x1, long y1, long x2, long y2);
 public:
+	Shape();
+	Shape(const Shape&);
 	~Shape();
+	int isStarted();
+	void UpdateEnd(HWND hWnd);
 	void Set(long x1, long y1, long x2, long y2);
 	virtual void Show(HDC) = 0;
+	virtual void Shadow(HDC) = 0;
+	virtual Shape* copy() const = 0;
 };

@@ -1,5 +1,5 @@
 #pragma once
-#include "Shape.h"
+#include "shapes.h"
 #include "ShapeEditor.h"
 #include "Toolbar.h"
 
@@ -10,10 +10,7 @@ private:
 	int COUNT_OF_OBJECTS = 0;
 	Shape* pcshape[ARRAY_SIZE];
 public:
-	void StartPointEditor(HWND hWnd);
-	void StartLineEditor(HWND hWnd);
-	void StartRectEditor(HWND hWnd);
-	void StartEllipseEditor(HWND hWnd);
+	void Start(HWND hWnd, Shape *);
 	void OnLBdown(HWND hWnd);
 	void OnLBup(HWND hWnd);
 	void OnMouseMove(HWND hWnd);

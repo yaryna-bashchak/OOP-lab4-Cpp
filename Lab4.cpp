@@ -162,22 +162,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case ID_TOOL_POINT:
         case IDM_POINT:
-            Editor.StartPointEditor(hWnd);
+            Editor.Start(hWnd, new Point);
             break;
 
         case ID_TOOL_LINE:
         case IDM_LINE:
-            Editor.StartLineEditor(hWnd);
+            Editor.Start(hWnd, new Line);
             break;
 
         case ID_TOOL_RECT:
         case IDM_RECT:
-            Editor.StartRectEditor(hWnd);
+            Editor.Start(hWnd, new Rect);
             break;
 
         case ID_TOOL_ELLIPSE:
         case IDM_ELLIPSE:
-            Editor.StartEllipseEditor(hWnd);
+            Editor.Start(hWnd, new Elipse);
             break;
 
         case IDM_ABOUT:
