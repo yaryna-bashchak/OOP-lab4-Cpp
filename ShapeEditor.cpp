@@ -1,3 +1,4 @@
+/*
 #include "framework.h"
 #include "ShapeEditor.h"
 #include "editors.h"
@@ -11,7 +12,7 @@ ShapeEditor::ShapeEditor(HWND hwnd) {
 	hPenOld = (HPEN)SelectObject(hdc, hPenSolid);
 };
 
-void ShapeEditor::UpdateXY()
+void ShapeEditor::UpdateEnd()
 {
 	POINT pt;
 	GetCursorPos(&pt);
@@ -20,14 +21,14 @@ void ShapeEditor::UpdateXY()
 	yend = pt.y;
 }
 
-int ShapeEditor::Check() {
+int ShapeEditor::isStarted() {
 	if (xstart == 0 && ystart == 0 && xend == 0 && yend == 0) return 0;
 	else return 1;
 }
 
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
-	UpdateXY();
+	UpdateEnd();
 	xstart = xend;
 	ystart = yend;
 }
@@ -54,3 +55,4 @@ void ShapeEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam, LPARAM id, BOOL pres
 	if (press)
 		CheckMenuItem(hSubMenu, IDS[id-1], MF_CHECKED);
 };
+*/

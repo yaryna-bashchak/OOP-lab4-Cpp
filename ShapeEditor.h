@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include "Editor.h"
 
@@ -8,8 +9,8 @@ protected:
 	HWND hWnd;
 	HDC hdc;
 	HPEN hPenSolid, hPenOld;
-	void UpdateXY();
-	int Check();
+	void UpdateEnd();
+	int isStarted();
 public:
 	ShapeEditor(HWND hwnd);
 	void OnLBdown(HWND hWnd);
@@ -18,3 +19,4 @@ public:
 	void OnPaint(HWND hWnd, Shape* pcshape[], int COUNT_OF_OBJECTS);
 	void OnInitMenuPopup(HWND, WPARAM, LPARAM, BOOL);
 };
+*/

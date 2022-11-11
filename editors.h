@@ -1,4 +1,5 @@
 #pragma once
+/*
 #include "shapes.h"
 #include "ShapeEditor.h"
 #include "resource.h"
@@ -15,8 +16,8 @@ public:
 
 	void OnLBup(HWND hWnd, Shape* p[], int COUNT_OF_OBJECTS)
 	{
-		UpdateXY();
-		p[COUNT_OF_OBJECTS] = new PointShape;
+		UpdateEnd();
+		p[COUNT_OF_OBJECTS] = new Point;
 		p[COUNT_OF_OBJECTS]->Set(xstart, ystart, xend, yend);
 		xstart = ystart = xend = yend = 0;
 		InvalidateRect(hWnd, NULL, TRUE);
@@ -42,8 +43,8 @@ public:
 
 	void OnLBup(HWND hWnd, Shape* p[], int COUNT_OF_OBJECTS)
 	{
-		UpdateXY();
-		p[COUNT_OF_OBJECTS] = new LineShape;
+		UpdateEnd();
+		p[COUNT_OF_OBJECTS] = new Line;
 		p[COUNT_OF_OBJECTS]->Set(xstart, ystart, xend, yend);
 		xstart = ystart = xend = yend = 0;
 		InvalidateRect(hWnd, NULL, TRUE);
@@ -55,7 +56,7 @@ public:
 			SetROP2(hdc, R2_NOTXORPEN);
 
 			DrawLine();
-			UpdateXY();
+			UpdateEnd();
 			DrawLine();
 		}
 		
@@ -82,8 +83,8 @@ public:
 
 	void OnLBup(HWND hWnd, Shape* p[], int COUNT_OF_OBJECTS)
 	{
-		UpdateXY();
-		p[COUNT_OF_OBJECTS] = new RectShape;
+		UpdateEnd();
+		p[COUNT_OF_OBJECTS] = new Rect;
 		p[COUNT_OF_OBJECTS]->Set(xstart, ystart, xend, yend);
 		xstart = ystart = xend = yend = 0;
 		InvalidateRect(hWnd, NULL, TRUE);
@@ -91,11 +92,11 @@ public:
 
 	void OnMouseMove(HWND hWnd)
 	{
-		if (Check()) {
+		if (isStarted()) {
 			SetROP2(hdc, R2_NOTXORPEN);
 
 			DrawRect();
-			UpdateXY();
+			UpdateEnd();
 			DrawRect();
 		}	
 	}
@@ -125,8 +126,8 @@ public:
 	
 	void OnLBup(HWND hWnd, Shape* p[], int COUNT_OF_OBJECTS)
 	{
-		UpdateXY();
-		p[COUNT_OF_OBJECTS] = new EllipseShape;
+		UpdateEnd();
+		p[COUNT_OF_OBJECTS] = new Ellipse;
 		p[COUNT_OF_OBJECTS]->Set(xstart, ystart, xend, yend);
 		xstart = ystart = xend = yend = 0;
 		InvalidateRect(hWnd, NULL, TRUE);
@@ -134,14 +135,16 @@ public:
 
 	void OnMouseMove(HWND hWnd)
 	{
-		if (Check()) {
+		if (isStarted()) {
 			SetROP2(hdc, R2_NOTXORPEN);
 
 			DrawEllipse();
 			DrawRect();
-			UpdateXY();
+			UpdateEnd();
 			DrawEllipse();
 			DrawRect();
 		}
 	}
 };
+
+*/

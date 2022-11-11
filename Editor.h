@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include "framework.h"
 #include "Shape.h"
@@ -9,3 +10,4 @@ public:
 	virtual void OnLBup(HWND, Shape* p[], int) = 0;
 	virtual void OnMouseMove(HWND) = 0;
 };
+*/
