@@ -16,7 +16,7 @@ public:
 
 	Point* copy() const { Point* ret = new Point(*this); return ret; }
 
-	void Show(HDC hdc) {
+	virtual void Show(HDC hdc) {
 		DrawLine(hdc, xs2, ys2, xs2, ys2);
 	}
 
@@ -38,11 +38,9 @@ public:
 
 	Line* copy() const { Line* ret = new Line(*this); return ret; }
 
-	void Show(HDC hdc) {
+	virtual void Show(HDC hdc) {
 		DrawLine(hdc, xs1, ys1, xs2, ys2);
 	}
-
-	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); }
 };
 
 ////////////////////////////////////////////////
@@ -60,11 +58,9 @@ public:
 
 	Rect* copy() const { Rect* ret = new Rect(*this); return ret; }
 
-	void Show(HDC hdc) {
+	virtual void Show(HDC hdc) {
 		DrawRect(hdc, xs1, ys1, xs2, ys2);
 	}
-
-	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); }
 };
 
 /////////////////////////////////////////////////////
@@ -82,10 +78,44 @@ public:
 
 	Elipse* copy() const { Elipse* ret = new Elipse(*this); return ret; }
 
-	void Show(HDC hdc)
+	virtual void Show(HDC hdc)
 	{
 		DrawEllipse(hdc, 2 * xs1 - xs2, 2 * ys1 - ys2, xs2, ys2);
 	}
+};
 
-	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); SelectObject(hdc, hBrush);}
+/////////////////////////////////////////////////////
+
+class OLineO : public Line, public Elipse
+{
+public:
+	virtual void Show(HDC hdc)
+	{
+		long x1, y1, x2, y2;
+		x1 = Line::xs1; y1 = Line::ys1;
+		x2 = Line::xs2; y2 = Line::ys2;
+
+		Line::Show(hdc);
+		Elipse::Set(x1, y1, x1 + 10, y1 + 10);
+		Elipse::Show(hdc);
+		Elipse::Set(x2, y2, x2 + 10, y2 + 10);
+		Elipse::Show(hdc);
+	}
+};
+
+class Cube : public Line, public Elipse
+{
+public:
+	virtual void Show(HDC hdc)
+	{
+		long x1, y1, x2, y2;
+		x1 = Line::xs1; y1 = Line::ys1;
+		x2 = Line::xs2; y2 = Line::ys2;
+
+		/*Line::Show(hdc);
+		Elipse::Set(x1, y1, x1 + 10, y1 + 10);
+		Elipse::Show(hdc);
+		Elipse::Set(x2, y2, x2 + 10, y2 + 10);
+		Elipse::Show(hdc);*/
+	}
 };

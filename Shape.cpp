@@ -63,3 +63,10 @@ int Shape::isStarted() {
 	if (xs1 == 0 && ys1 == 0 && xs2 == 0 && ys2 == 0) return 0;
 	else return 1;
 }
+
+void Shape::SelectPen(HDC hdc)
+{ 
+	SelectObject(hdc, hPen);
+	if (hBrush)
+		SelectObject(hdc, hBrush);
+}

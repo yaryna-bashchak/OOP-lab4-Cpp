@@ -4,7 +4,7 @@
 class Shape
 {
 protected:
-	long xs1 = 0, ys1 = 0, xs2 = 0, ys2 = 0;
+	long xs1, ys1, xs2, ys2;
 	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
 	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
 	HPEN hShadowPen = CreatePen(PS_DOT, 1, 0);
@@ -16,7 +16,7 @@ public:
 	Shape(const Shape&);
 	~Shape();
 	int isStarted();
-	virtual void SelectPen(HDC) = 0;
+	virtual void SelectPen(HDC);
 	HPEN GetShadowPen() { return hShadowPen; };
 	void UpdateEnd(HWND hWnd);
 	void Set(long x1, long y1, long x2, long y2);

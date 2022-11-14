@@ -17,6 +17,7 @@ Toolbar ToolBar(ppress, pLastButtonId);
 
 void MyEditor::Start(HWND hWnd, Shape * object) {
 	pse = object;
+	pse->Set(0, 0, 0, 0);
 	ToolBar.OnPress(hWnd, object);
 };
 
