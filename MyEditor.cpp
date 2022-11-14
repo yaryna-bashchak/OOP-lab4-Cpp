@@ -1,8 +1,6 @@
 #include "framework.h"
 #include "MyEditor.h"
-#include "Editor.h"
 #include "Shape.h"
-#include "editors.h"
 #include <typeinfo>
 
 Shape* pse = NULL;

@@ -1,6 +1,5 @@
 #pragma once
 #include "shapes.h"
-#include "ShapeEditor.h"
 #include "Toolbar.h"
 
 class MyEditor
