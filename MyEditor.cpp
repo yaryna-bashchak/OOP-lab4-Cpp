@@ -3,6 +3,7 @@
 #include "Editor.h"
 #include "Shape.h"
 #include "editors.h"
+#include <typeinfo>
 
 Shape* pse = NULL;
 BOOL press = FALSE;
@@ -37,7 +38,7 @@ void MyEditor::OnLBup(HWND hWnd) {
 	}
 };
 void MyEditor::OnMouseMove(HWND hWnd) {
-	if (press && pse->isStarted())
+	if (press && pse->isStarted() && (typeid(*pse) != typeid(Point)))
 	{
 		HDC hdc = GetDC(hWnd);
 		SetROP2(hdc, R2_NOTXORPEN);

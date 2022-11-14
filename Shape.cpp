@@ -13,7 +13,7 @@ Shape::Shape(const Shape &other)
 Shape::~Shape()
 {
 	DeleteObject(hPen);
-	DeleteObject(hPenShadow);
+	DeleteObject(hShadowPen);
 	DeleteObject(hBrush);
 }
 
@@ -42,21 +42,21 @@ void Shape::UpdateEnd(HWND hWnd)
 void Shape::DrawLine(HDC hdc, long x1, long y1, long x2, long y2)
 {
 	MoveToEx(hdc, x1, y1, NULL);
-	LineTo(hdc, x1, y2);
+	LineTo(hdc, x2, y2);
 }
 
 void Shape::DrawRect(HDC hdc, long x1, long y1, long x2, long y2)
 {
-	MoveToEx(hdc, x1, y2, NULL);
-	LineTo(hdc, x2, 2 * y1 - y2);
-	LineTo(hdc, 2 * x1 - x2, 2 * y1 - y2);
-	LineTo(hdc, 2 * x1 - x2, y2);
+	MoveToEx(hdc, x2, y2, NULL);
+	LineTo(hdc, x2, y1);
+	LineTo(hdc, x1, y1);
+	LineTo(hdc, x1, y2);
 	LineTo(hdc, x2, y2);
 }
 
 void Shape::DrawEllipse(HDC hdc, long x1, long y1, long x2, long y2)
 {
-	Arc(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2, 0, 0, 0, 0);
+	Ellipse(hdc, x1, y1, x2, y2);
 }
 
 int Shape::isStarted() {

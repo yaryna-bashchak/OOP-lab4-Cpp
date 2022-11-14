@@ -17,9 +17,7 @@ public:
 	Point* copy() const { Point* ret = new Point(*this); return ret; }
 
 	void Show(HDC hdc) {
-		SelectObject(hdc, hPen);
-		MoveToEx(hdc, xs2, ys2, NULL);
-		LineTo(hdc, xs2, ys2);
+		DrawLine(hdc, xs2, ys2, xs2, ys2);
 	}
 
 	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); }
@@ -43,9 +41,7 @@ public:
 	Line* copy() const { Line* ret = new Line(*this); return ret; }
 
 	void Show(HDC hdc) {
-		//SelectObject(hdc, hPen);
-		MoveToEx(hdc, xs1, ys1, NULL);
-		LineTo(hdc, xs2, ys2);
+		DrawLine(hdc, xs1, ys1, xs2, ys2);
 	}
 
 	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); }
@@ -69,12 +65,7 @@ public:
 	Rect* copy() const { Rect* ret = new Rect(*this); return ret; }
 
 	void Show(HDC hdc) {
-		//SelectObject(hdc, hPen);
-		MoveToEx(hdc, xs2, ys2, NULL);
-		LineTo(hdc, xs2, ys1);
-		LineTo(hdc, xs1 , ys1);
-		LineTo(hdc, xs1, ys2);
-		LineTo(hdc, xs2, ys2);
+		DrawRect(hdc, xs1, ys1, xs2, ys2);
 	}
 
 	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); }
@@ -85,7 +76,8 @@ public:
 class Elipse : public Shape
 {
 private:
-	hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
+	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
+	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
 public:
 	Elipse(void)
 		:Shape()
@@ -99,9 +91,8 @@ public:
 
 	void Show(HDC hdc)
 	{
-		//SelectObject(hdc, hBrush);
-		Ellipse(hdc, 2 * xs1 - xs2, 2 * ys1 - ys2, xs2, ys2);
+		DrawEllipse(hdc, 2 * xs1 - xs2, 2 * ys1 - ys2, xs2, ys2);
 	}
 
-	void SelectPen(HDC hdc) { SelectObject(hdc, hBrush); }
+	void SelectPen(HDC hdc) { SelectObject(hdc, hPen); SelectObject(hdc, hBrush);}
 };
