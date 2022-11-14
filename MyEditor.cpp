@@ -11,6 +11,8 @@ BOOL* ppress = &press;
 LPARAM LastButtonId = 0;
 LPARAM* pLastButtonId = &LastButtonId;
 
+UINT IDS[] = { IDM_POINT, IDM_LINE, IDM_RECT, IDM_ELLIPSE };
+
 Toolbar ToolBar(ppress, pLastButtonId);
 
 void MyEditor::Start(HWND hWnd, Shape * object) {
@@ -24,7 +26,6 @@ void MyEditor::OnLBdown(HWND hWnd) {
 		pse->Set(0, 0, 0, 0);
 		pse->UpdateEnd(hWnd);
 	}
-		//pse->OnLBdown(hWnd);
 };
 void MyEditor::OnLBup(HWND hWnd) {
 	if (press && pse->isStarted())
@@ -32,7 +33,6 @@ void MyEditor::OnLBup(HWND hWnd) {
 		pse->UpdateEnd(hWnd);
 		pcshape[COUNT_OF_OBJECTS] = pse->copy();
 		InvalidateRect(hWnd, NULL, TRUE);
-		//pse->OnLBup(hWnd, pcshape, COUNT_OF_OBJECTS);
 		COUNT_OF_OBJECTS++;
 		pse->Set(0, 0, 0, 0);
 	}
@@ -46,7 +46,6 @@ void MyEditor::OnMouseMove(HWND hWnd) {
 		pse->Show(hdc);
 		pse->UpdateEnd(hWnd);
 		pse->Show(hdc);
-		//pse->OnMouseMove(hWnd);
 	}
 		
 };
@@ -60,12 +59,22 @@ void MyEditor::OnPaint(HWND hWnd) {
 		pcshape[i]->Show(hdc);
 	}	
 	EndPaint(hWnd, &ps);
-	//pse->OnPaint(hWnd, pcshape, COUNT_OF_OBJECTS);
 };
 
 void MyEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParam) {
-	//if (pse) 
-		//pse->OnInitMenuPopup(hWnd, wParam, LastButtonId, press);
+	if (pse)
+	{
+		HMENU hMenu, hSubMenu;
+		hMenu = GetMenu(hWnd);
+		hSubMenu = GetSubMenu(hMenu, 1);
+		if ((HMENU)wParam == hSubMenu)
+		{
+			for (LPARAM ID : IDS)
+				CheckMenuItem(hSubMenu, ID, MF_UNCHECKED);
+		}
+		if (press)
+			CheckMenuItem(hSubMenu, IDS[LastButtonId - 1], MF_CHECKED);
+	}
 }
 
 void MyEditor::OnCreate(HWND hWnd, HINSTANCE hInst) {
