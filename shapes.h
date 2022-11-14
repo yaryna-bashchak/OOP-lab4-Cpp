@@ -135,18 +135,18 @@ public:
 		long ax = (((x2 - x1) > 0) ? 1 : -1) * a;
 		long ay = (((y2 - y1) > 0) ? 1 : -1) * a;
 
-		Set(x1, y1, x1 + 2 * ax / 3, y1 + 2 * ay / 3);
+		Set(x1, y1, x1 + 3 * ax / 4, y1 + 3 * ay / 4);
 		Rect::Show(hdc);
-		Set(x1 + ax / 3, y1 + ay / 3, x1 + ax, y1 + ay);
+		Set(x1 + ax / 4, y1 + ay / 4, x1 + ax, y1 + ay);
 		Rect::Show(hdc);
 
-		Set(x1, y1, x1 + ax / 3, y1 + ay / 3);
+		Set(x1, y1, x1 + ax / 4, y1 + ay / 4);
 		Line::Show(hdc);
-		Set(x1 + 2 * ax / 3, y1 + 2 * ay / 3, x1 + ax, y1 + ay);
+		Set(x1 + 3 * ax / 4, y1 + 3 * ay / 4, x1 + ax, y1 + ay);
 		Line::Show(hdc);
-		Set(x1, y1 + 2 * ay / 3, x1 + ax / 3, y1 + ay);
+		Set(x1, y1 + 3 * ay / 4, x1 + ax / 4, y1 + ay);
 		Line::Show(hdc);
-		Set(x1 + 2 * ax / 3, y1, x1 + ax, y1 + ay / 3);
+		Set(x1 + 3 * ax / 4, y1, x1 + ax, y1 + ay / 4);
 		Line::Show(hdc);
 
 		Set(x1, y1, x2, y2);
