@@ -5,12 +5,13 @@ class Shape
 {
 protected:
 	long xs1, ys1, xs2, ys2;
-	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
+	HPEN hPen = CreatePen(PS_SOLID, 2, 0);
 	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
 	HPEN hShadowPen = CreatePen(PS_DOT, 1, 0);
 	void DrawLine(HDC hdc, long x1, long y1, long x2, long y2);
 	void DrawRect(HDC hdc, long x1, long y1, long x2, long y2);
 	void DrawEllipse(HDC hdc, long x1, long y1, long x2, long y2);
+
 public:
 	Shape();
 	Shape(const Shape&);
