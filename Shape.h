@@ -5,8 +5,8 @@ class Shape
 {
 protected:
 	long xs1 = 0, ys1 = 0, xs2 = 0, ys2 = 0;
-	HPEN hPen;
-	HBRUSH hBrush;
+	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
+	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
 	HPEN hShadowPen = CreatePen(PS_DOT, 1, 0);
 	void DrawLine(HDC hdc, long x1, long y1, long x2, long y2);
 	void DrawRect(HDC hdc, long x1, long y1, long x2, long y2);

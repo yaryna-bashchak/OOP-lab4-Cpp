@@ -27,8 +27,6 @@ public:
 
 class Line : public Shape
 {
-private:
-	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
 public:
 	Line(void)
 		:Shape()
@@ -51,8 +49,6 @@ public:
 
 class Rect : public Shape
 {
-private:
-	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
 public:
 	Rect(void)
 		:Shape()
@@ -75,9 +71,6 @@ public:
 
 class Elipse : public Shape
 {
-private:
-	HPEN hPen = CreatePen(PS_SOLID, 3, 0);
-	HBRUSH hBrush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 255));
 public:
 	Elipse(void)
 		:Shape()
