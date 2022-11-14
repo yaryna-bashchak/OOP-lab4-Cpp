@@ -15,9 +15,14 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { Point* ret = new Point(*this); return ret; }
+	virtual Shape* copy() const
+	{
+		Point* NewCopy = new Point(*this);
+		return NewCopy;
+	}
 
-	virtual void Show(HDC hdc) {
+	virtual void Show(HDC hdc)
+	{
 		DrawLine(hdc, xs2, ys2, xs2, ys2);
 	}
 
@@ -37,7 +42,11 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { Line* ret = new Line(*this); return ret; }
+	virtual Shape* copy() const
+	{ 
+		Line* NewCopy = new Line(*this);
+		return NewCopy;
+	}
 
 	virtual void Show(HDC hdc) {
 		DrawLine(hdc, xs1, ys1, xs2, ys2);
@@ -57,7 +66,11 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { Rect* ret = new Rect(*this); return ret; }
+	virtual Shape* copy() const 
+	{
+		Rect* NewCopy = new Rect(*this);
+		return NewCopy;
+	}
 
 	virtual void Show(HDC hdc) {
 		DrawRect(hdc, xs1, ys1, xs2, ys2);
@@ -77,7 +90,11 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { Elipse* ret = new Elipse(*this); return ret; }
+	virtual Shape* copy() const 
+	{ 
+		Elipse* NewCopy = new Elipse(*this); 
+		return NewCopy; 
+	}
 
 	virtual void Show(HDC hdc)
 	{
@@ -98,7 +115,11 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { OLineO* ret = new OLineO(*this); return ret; }
+	virtual Shape* copy() const 
+	{ 
+		OLineO* NewCopy = new OLineO(*this);
+		return NewCopy;
+	}
 
 	virtual void Show(HDC hdc)
 	{
@@ -126,7 +147,11 @@ public:
 		:Shape(other)
 	{}
 
-	virtual Shape* copy() const { Cube* ret = new Cube(*this); return ret; }
+	virtual Shape* copy() const 
+	{ 
+		Cube* NewCopy = new Cube(*this);
+		return NewCopy;
+	}
 
 	virtual void Show(HDC hdc)
 	{

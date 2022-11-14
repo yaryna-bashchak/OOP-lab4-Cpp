@@ -11,16 +11,15 @@ protected:
 	void DrawLine(HDC hdc, long x1, long y1, long x2, long y2);
 	void DrawRect(HDC hdc, long x1, long y1, long x2, long y2);
 	void DrawEllipse(HDC hdc, long x1, long y1, long x2, long y2);
-
+    Shape(const Shape&);
 public:
-	Shape();
-	Shape(const Shape&);
+	Shape();	
 	~Shape();
+	void Set(long x1, long y1, long x2, long y2);
+	virtual void Show(HDC) = 0;
+	virtual Shape* copy() const = 0;
 	int isStarted();
 	virtual void SelectPen(HDC);
 	HPEN GetShadowPen() { return hShadowPen; };
 	void UpdateEnd(HWND hWnd);
-	void Set(long x1, long y1, long x2, long y2);
-	virtual void Show(HDC) = 0;
-	virtual Shape* copy() const = 0;
 };

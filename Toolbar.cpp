@@ -91,6 +91,12 @@ void Toolbar::OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
         case ID_TOOL_ELLIPSE:
             lstrcpy(lpttt->szText, L"Еліпс");
             break;
+        case ID_TOOL_OLINEO:
+            lstrcpy(lpttt->szText, L"Лінія з кругами");
+            break;
+        case ID_TOOL_CUBE:
+            lstrcpy(lpttt->szText, L"Каркас куба");
+            break;
         case IDM_ABOUT:
             lstrcpy(lpttt->szText, L"Довідка");
             break;
