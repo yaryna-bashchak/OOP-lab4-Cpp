@@ -3,7 +3,7 @@
 #include "shapes.h"
 #include <typeinfo>
 
-int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE };
+int IDS[] = { ID_TOOL_POINT, ID_TOOL_LINE, ID_TOOL_RECT, ID_TOOL_ELLIPSE, ID_TOOL_OLINEO, ID_TOOL_CUBE };
 const int COUNT_OF_BUTTONS = sizeof(IDS) / sizeof(int);
 TBBUTTON tbb[COUNT_OF_BUTTONS];
 int GetToolId(Shape*);
@@ -106,4 +106,6 @@ int GetToolId(Shape* object) {
     else if (type == typeid(Line))    return ID_TOOL_LINE;
     else if (type == typeid(Rect))    return ID_TOOL_RECT;
     else if (type == typeid(Elipse))  return ID_TOOL_ELLIPSE;
+    else if (type == typeid(OLineO))  return ID_TOOL_OLINEO;
+    else if (type == typeid(Cube))    return ID_TOOL_CUBE;
 }

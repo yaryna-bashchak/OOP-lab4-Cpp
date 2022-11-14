@@ -11,7 +11,7 @@ BOOL* ppress = &press;
 LPARAM LastButtonId = 0;
 LPARAM* pLastButtonId = &LastButtonId;
 
-UINT IDS[] = { IDM_POINT, IDM_LINE, IDM_RECT, IDM_ELLIPSE };
+UINT IDS[] = { IDM_POINT, IDM_LINE, IDM_RECT, IDM_ELLIPSE, IDM_OLINEO, IDM_CUBE };
 
 Toolbar ToolBar(ppress, pLastButtonId);
 
