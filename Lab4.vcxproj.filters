@@ -70,4 +70,9 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Lab3 (full)\Lab3\ClassDiagram.cd">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

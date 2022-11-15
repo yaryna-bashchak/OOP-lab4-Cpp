@@ -59,7 +59,7 @@ void Shape::DrawEllipse(HDC hdc, long x1, long y1, long x2, long y2)
 	Ellipse(hdc, x1, y1, x2, y2);
 }
 
-int Shape::isStarted() {
+BOOL Shape::isStarted() {
 	if (xs1 == 0 && ys1 == 0 && xs2 == 0 && ys2 == 0) return 0;
 	else return 1;
 }

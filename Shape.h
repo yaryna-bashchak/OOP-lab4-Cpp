@@ -18,7 +18,7 @@ public:
 	void Set(long x1, long y1, long x2, long y2);
 	virtual void Show(HDC) = 0;
 	virtual Shape* copy() const = 0;
-	int isStarted();
+	BOOL isStarted();
 	virtual void SelectPen(HDC);
 	HPEN GetShadowPen() { return hShadowPen; };
 	void UpdateEnd(HWND hWnd);
